@@ -1,0 +1,12 @@
+corretto
+dash
+dropbox
+flux
+intellij-idea-ce
+iterm2
+keka
+microsoft-teams
+postman
+rocket-chat
+timeular
+visual-studio-code
