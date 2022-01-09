@@ -1,0 +1,4 @@
+[includeIf "gitdir:~/Dev/work/"]
+    path = /path/to/file
+
+[alias]
