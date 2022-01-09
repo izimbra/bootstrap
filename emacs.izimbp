@@ -1,0 +1,42 @@
+(require 'package)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-agenda-files (quote ("~/Dropbox/Studies/SEM thesis/thesis.org")))
+ '(package-archives
+   (quote
+    (("gnu" . "https://elpa.gnu.org/packages/")
+     ("melpa" . "https://melpa.org/packages/"))))
+ '(package-selected-packages (quote (futhark-mode
+				     markdown-mode
+				     haskell-mode
+				     erlang-mode))))
+(package-initialize)
+(load-theme 'vs-dark t) 
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+
+(defvar temp-dir "/tmp"
+  "Directory to store auto-save and backup files"
+  )
+
+;; Store backup and auto-save files in temp-dir
+(setq backup-directory-alist
+      `((".*" . ,temp-dir)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
+
+;; Erlang mode
+(setq load-path (cons  "/usr/local/lib/erlang/lib/tools-3.3.1/emacs"
+      load-path))
+      (setq erlang-root-dir "/usr/local/lib/erlang")
+      (setq exec-path (cons "/usr/local/lib/erlang/bin" exec-path))
+      (require 'erlang-start)

@@ -1,0 +1,203 @@
+export CLICOLOR=1 
+
+export HISTCONTROL=ignoredups # Ignores dupes in the history
+
+### Paths ###
+export DEV=/Users/izimbra/Dev
+export PFP=$DEV/PFP
+export EXERCISM=$DEV/exercism
+export DROPBOX=~/Dropbox
+export STUDY=$DROPBOX/Studies
+export THESIS="$STUDY/CSALL/Master's Thesis"
+##export DYLD_LIBRARY_PATH=/opt/X11/lib:$DYLD_LIBRARY_PATH
+# dot files
+export DOTFILES=$DROPBOX/dotfiles
+# Haskell Platform via ghcup
+[ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
+# Cabal config file
+export CABAL_CONFIG=$DOTFILES/cabal
+
+
+# May be needed for Stack
+# WARNING: '/Users/izimbra/.local/bin' is not on your PATH.
+#    For best results, please add it to the beginning of PATH in your profile.
+
+
+# bash completions for Homebrew packages
+if type brew &>/dev/null; then
+  HOMEBREW_PREFIX="$(brew --prefix)"
+  if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]; then
+    source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
+  else
+    for COMPLETION in "${HOMEBREW_PREFIX}/etc/bash_completion.d/"*; do
+      [[ -r "$COMPLETION" ]] && source "$COMPLETION"
+    done
+  fi
+fi
+
+
+
+## /usr/local/bin is searched first for Homebrewed software
+export PATH=/usr/local/bin:$PATH
+
+## Emacs Prelude
+
+## TeX dirtribution
+#export PATH=/usr/local/texlive/2013/bin/x86_64-darwin:$PATH
+
+## JCT installation
+#export INTHOME=/usr/local/jct_full 
+#export JCTHOME=/usr/local/jct_full/jcT 
+#export ERLHOME=/usr/lib/erlang
+#export PATH=$JCTHOME/bin:$PATH:$ERLHOME/bin
+
+
+## Java
+#export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home
+#'/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home'
+#export PATH=$JAVA_HOME/bin:$PATH
+
+## Scala build tool path
+#export PATH=/usr/local/Cellar/sbt/0.13.6/bin:$PATH
+# optional JVM options passed to SBT 
+#SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"
+
+#CUnit
+#export PATH=/usr/local/doc/CUnit:/usr/local/share/CUnit:/usr/local/include/CUnit:$PATH
+
+#Haskell binaries
+#export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
+
+## Terminal colours
+CLEAR=00
+# foregorund ANSI colours
+BLACK=30
+BLUE=34
+CYAN=36
+GREEN=32
+PURPLE=35
+RED=31
+WHITE=37
+YELLOW=33
+# Attributes
+NORMAL=0
+LIGHT=1
+DIM=2
+UNDERLINED=4
+BLINKING=5
+REVERSED=7
+HIDDEN=8
+#NM="\[\033[0;38m\]" #means no background and white lines
+#HI="\[\033[0;37m\]" #change this for letter colors
+#HII="\[\033[0;31m\]" #change this for letter colors
+#SI="\[\033[0;33m\]" #this is for the current directory
+#IN="\[\033[0m\]"
+export PS1="\[\033[0;32m\]\u\[\033[00m\]:\[\033[0;34m\]\w\[\033[00m\]$ "
+
+#COLOR_YELLOW="\[\e[33;40m\]"
+#COLOR_RED="\[\e[31;40m\]"
+#COLOR_GREEN="\[\e[32;40m\]"
+#COLOR_BLUE="\[\e[34;40m\]"
+#COLOR_NONE="\[\e[0m\]"
+#COLOR_NONEP="\[\e[38;40m\]"
+
+## Command aliases
+alias profile='emacs ~/.profile'
+#alias fixopenwith='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user'
+alias ..='cd ..'
+alias cd..='cd ..'
+alias hs='ghci'
+#alias tscp='/Users/izimbra/Library/Haskell/bin/threadscope'
+alias clean='rm *~ *#'
+alias dir='ls -lha'
+alias ll='ls -lha'
+alias lt='ls -lhat'
+alias nproc='sysctl hw.physicalcpu'
+alias nthread='sysctl hw.logicalcpu'
+alias py='python'
+alias py2='/usr/bin/python'
+
+# network locations
+#alias onl='scselect Online'
+#alias ofl='scselect Offline'
+#alias eab='scselect EAB'
+#alias vit='scselect VIT'
+
+# folders
+alias home='cd ~/'
+alias dev='cd $DEV'
+alias dotfiles='cd $DOTFILES'
+#alias eab='cd $THESIS'
+#alias bod='cd $THESIS/bodega-latest'
+#alias study='cd $STUDY'
+alias csall='cd $STUDY/CSALL'
+alias thesis='cd "$THESIS"'
+alias pfp='cd $PFP'
+alias exer='cd $EXERCISM'
+#alias r1='ssh groshev:ch19L0veHug$68SEev@remote1.student.chalmers.se'
+#alias r2='ssh groshev:ch19L0veHug$68SEev@remote2.student.chalmers.se'
+
+# Git shortcuts 
+alias gs='git status'
+alias gd='git diff'
+alias ga='git add'
+alias gc='git commit -m'
+alias gca='git commit -a -m'
+alias gl='git log --oneline'
+alias gcl='git config --list'
+alias gpp='git pull && git push'
+
+
+## Fix locale
+export LC_ALL=en_US.UTF-8  
+export LANG=en_US.UTF-8
+
+## GF library path (using dev version)
+#export GF_LIB_PATH=/Users/izimbra/Library/Haskell/ghc-7.6.3/lib/gf-3.5.12/share/lib
+
+## GDK dependency (for Gtk)
+#export GDK_PIXBUF_MODULEDIR="/usr/local/lib/gdk-pixbuf-2.0/2.10.0/loaders"
+
+# Setting PATH for Python 3.4
+# The orginal version is saved in .profile.pysave
+#PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
+#export PATH
+
+## Scala
+#export CONSCRIPT_HOME=$HOME/.conscript
+#export PATH=$CONSCRIPT_HOME/bin:$PATH
+
+
+# to disable activation of Anaconda's 'base' environment run:
+# $ conda config --set auto_activate_base false
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/usr/local/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/usr/local/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/usr/local/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/usr/local/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+export PATH="/usr/local/anaconda3/bin:$PATH"
+
+# CUDA Toolkit
+# export PATH="/usr/local/cuda/bin:$PATH"
+# export CPATH="/usr/local/cuda/include"
+# export LIBRARY_PATH="/usr/local/cuda/lib"
+# export LD_LIBRARY_PATH="/usr/local/cuda/lib"
+# export DYLD_LIBRARY_PATH="/usr/local/cuda/lib:$DYLD_LIBRARY_PATH"
+
+
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+[O
+if [ -e /Users/izimbra/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/izimbra/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
